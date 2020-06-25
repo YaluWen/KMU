@@ -64,10 +64,7 @@ static emxArray_real_T *c_argInit_UnboundedxUnbounded_r(arma::mat CovVarAll)
   return result;
 }
 
-//' Return input string
-//'
-//' @param String
-//' @export
+// [[Rcpp::export]]
 double main_UStatsPvalueMain(double NoKernel, double pobs, arma::mat CovVarAll,double SimNumber)
 {
   arma::mat Dmatrix;

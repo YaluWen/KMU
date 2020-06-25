@@ -1,7 +1,6 @@
 ## Correlated Case ##
 #load data and test
 library(Matrix)
-library(psych)
 Beta.Weights<-function(MAF,weights.beta){
   n<-length(MAF)
   weights<-rep(0,n)
@@ -52,7 +51,7 @@ gen.ker.hadamard<-function(K1,K2){
   return(list(ker.cen=ker.cen,v1.cen=v1.cen))
 }
 
- 
+
 UPvalueMulti<-function(KAll,Yk)
 {
   Kallnew=list();
@@ -61,7 +60,7 @@ UPvalueMulti<-function(KAll,Yk)
   {
     for(j in 2:length(KAll)) {
       add=TRUE;
-      for(i in 1:length(Kallnew)) if(all.equal(round(Kallnew[[i]]),KAll[[j]])=="TRUE"){add=FALSE;break;}
+      for(i in 1:length(Kallnew)) if(all.equal(round(Kallnew[[i]],10),round(KAll[[j]],10),check.attributes = FALSE)=="TRUE"){add=FALSE;break;}
       if(add){Kallnew[[num+1]]=KAll[[j]]; num=num+1;}
     }
   }
@@ -73,8 +72,8 @@ UPvalueMulti<-function(KAll,Yk)
   {
     for(j in i:length(KAll))
     {
-      K1=KAll[[i]];K1=K1/tr(K1)*10;
-      K2=KAll[[j]];K2=K2/tr(K2)*10;
+      K1=KAll[[i]];K1=K1/psych::tr(K1)*10;
+      K2=KAll[[j]];K2=K2/psych::tr(K2)*10;
       if(i==j)
       {
         U=matrixcalc::hadamard.prod(K1,Yk);
@@ -197,7 +196,7 @@ getK<-function(x,y,z,pred)
   res=apply(res,2,rank);
   res=apply(res,2,scale);
   Y=gen.ker(covx=res,kernel.index="Lin");
-  Y$ker.cen=Y$ker.cen/tr(Y$ker.cen)*nrow(y);
+  Y$ker.cen=Y$ker.cen/psych::tr(Y$ker.cen)*nrow(y);
   x1=preprocess(x,pred);
   if(pred=="Cont")
   {
