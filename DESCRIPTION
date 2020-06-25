@@ -1,0 +1,12 @@
+Package: KMU
+Type: Package
+Title: An optimal kernel-based multivariate U-statistic to test for associations with multiple phenotypes
+Version: 1.0
+Date: 2020-04-15
+Author: Yalu Wen
+Maintainer: Yalu Wen <y.wen@auckland.ac.nz>
+Description: An optimal kernel-based multivariate U-statistic to test for associations between a set of predictors and multiple phenotypes. 
+License: MIT
+Imports: Rcpp (>= 1.0.4)
+LinkingTo: Rcpp, RcppArmadillo
+RoxygenNote: 7.1.0
