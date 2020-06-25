@@ -56,16 +56,16 @@ gen.ker.hadamard<-function(K1,K2){
 UPvalueMulti<-function(KAll,Yk)
 {
   Kallnew=list();
-  Kallnew[[1]]=Kall[[1]];num=1;
-  if(length(Kall)>1)
+  Kallnew[[1]]=KAll[[1]];num=1;
+  if(length(KAll)>1)
   {
-    for(j in 2:length(Kall)) {
+    for(j in 2:length(KAll)) {
       add=TRUE;
-      for(i in 1:length(Kallnew)) if(all.equal(round(Kallnew[[i]]),Kall[[j]])=="TRUE"){add=FALSE;break;}
-      if(add){Kallnew[[num+1]]=Kall[[j]]; num=num+1;}
+      for(i in 1:length(Kallnew)) if(all.equal(round(Kallnew[[i]]),KAll[[j]])=="TRUE"){add=FALSE;break;}
+      if(add){Kallnew[[num+1]]=KAll[[j]]; num=num+1;}
     }
   }
-  Kall=Kallnew;
+  KAll=Kallnew;
   n=nrow(KAll[[1]])
   VarCov=matrix(NA,length(KAll),length(KAll));
   UStats=rep(NA,length(KAll));
